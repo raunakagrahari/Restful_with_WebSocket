@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const userRouter = require('./routes/index');
 const restaurentRouter = require('./routes/index');
-const path = require('path');
+const { logger } = require('./utilities');
 const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
@@ -13,8 +13,6 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
 
-const publicPath = path.join(__dirname,'/public');
-app.use(express.static(publicPath));
 
 app.use(morgan('[:date[web]] :method :url :status :response-time ms - :res[content-length]'));
 
